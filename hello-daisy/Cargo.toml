@@ -11,7 +11,7 @@ targets = ["thumbv7em-none-eabihf"]
 [dependencies]
 cortex-m = "0.7.7"
 cortex-m-rt = { version = "0.7.3", features = ["device"] }
-daisy_bsp = { path="../daisy_bsp_digial", version = "0.5.2", features = ["seed"]  }
+daisy_bsp = { version = "0.5.1", features = ["seed"]  }
 embedded-graphics = "0.8.0"
 embedded-graphics-core = { version = "0.4.0", optional = true }
 stm32h7xx-hal = { version = "0.15.1", features = [ "stm32h750v", "rt", "revision_v", "usb_hs", "xspi", "gpio-h747" ] }

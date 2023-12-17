@@ -4,14 +4,11 @@
 #[macro_use]
 mod utilities;
 
-use core::result;
-
 use cortex_m_rt::entry;
 
+use daisy::hal::prelude::*;
 use daisy_bsp as daisy;
 
-use daisy::hal;
-use hal::prelude::*;
 
 use embedded_graphics::{
     mono_font::{ascii::FONT_6X10, MonoTextStyleBuilder},
@@ -19,7 +16,9 @@ use embedded_graphics::{
     prelude::*,
     text::{Baseline, Text},
 };
-use log::info;
+use log::{error, info};
+
+use sh1106::{prelude::*, Builder};
 
 // use sh1106::Builder;
 // use sh1106::mode::GraphicsMode;
@@ -49,23 +48,27 @@ fn main() -> ! {
         dp.GPIOG.split(ccdr.peripheral.GPIOG),
     );
 
-    let scl = pins.SEED_PIN_11.into_push_pull_output();
-    let sda = pins.SEED_PIN_12.into_alternate_open_drain();
-    let usart1 = pins.SEED_PIN_14.;
+    let mut scl = pins.SEED_PIN_11.into_alternate().set_open_drain();
+    let mut sda = pins.SEED_PIN_12.into_alternate().set_open_drain();
+    // scl.into_push_pull_output().set_high();
+    // let up1 = sda.into_push_pull_output_in_state(hal::gpio::PinState::High);
 
-    let mut i2c = dp
+    /* let mut i2c = dp
         .I2C1
-        .i2c((scl, sda), 100.kHz(), ccdr.peripheral.I2C4, &ccdr.clocks);
+        .i2c((scl, sda), 100.kHz(), ccdr.peripheral.I2C1, &ccdr.clocks);
 
     info!("Entering main loop");
 
     // - main loop ------------------------------------------------------------
-    let mut buf = [0x60];
+    let buf = [0x80, 0xae];
+    // i2c.master_re_start(0x3c, buf.len(), hal::i2c::Stop::Software);
+    // i2c.master_write(0x3c, buf.len(), hal::i2c::Stop::Automatic);
+    let message = match i2c.write(0x3C, &buf) {
+        Ok(n) => "write ok",
+        Err(e) => "error",
+    };
+    info!("{}", message); */
     loop {
-        buf[0] = 0x11;
-        i2c.master_write(0x76, 1, hal::i2c::Stop::Software);
-        let result = i2c.write(0x76, &buf);
-        i2c.master_stop();
-        info!("i2c result: {}", result.is_err());
+        
     }
 }
