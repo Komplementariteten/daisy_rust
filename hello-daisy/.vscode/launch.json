@@ -18,7 +18,8 @@
                 "interface/stlink.cfg",
                 "target/stm32h7x.cfg"
             ],
-            "runToEntryPoint": "main",
+            "preLaunchTask": "Cargo build",
+            // "runToEntryPoint": "main",
             "showDevDebugOutput": "raw"
         }
     ]

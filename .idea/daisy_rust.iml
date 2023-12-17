@@ -5,6 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/hello-daisy/examples" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/hello-daisy/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/daisy_bsp_digial/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/daisy_bsp_digial/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

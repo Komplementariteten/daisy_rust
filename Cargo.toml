@@ -9,4 +9,4 @@ targets = ["thumbv7em-none-eabihf"]
 
 [dependencies]
 [workspace]
-members = ["hello-daisy"]
+members = ["hello-daisy", "daisy_bsp_digial"]

@@ -1,0 +1,3 @@
+[submodule "daisy_bsp_digial"]
+	path = daisy_bsp_digial
+	url = git@github.com:Komplementariteten/daisy_bsp_digial.git
